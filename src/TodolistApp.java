@@ -3,7 +3,7 @@ public class TodolistApp {
     public static String[] model = new String[10]; // 10 data array
 
     public static void main(String[] args) {
-        testShowTodoList();
+        testAddTodoList();
     }
 
     /**
@@ -30,7 +30,7 @@ public class TodolistApp {
      * Add/Save todo list
      */
     public static void addTodoList(String todo) {
-        // check model isFull
+        // RESIZE ARRAY LENGTH
         var isFull = true;
         for(int i = 0; i < model.length; i++) {
             // if found array[i] is empty
@@ -61,7 +61,12 @@ public class TodolistApp {
     }
 
     public static void testAddTodoList() {
-        var dataInput = "Learning GoLang";
+        // will resize 2x (20, 40)
+        for (int i = 0; i < 25; i++) {
+            addTodoList("Test todo of - " + i);
+        }
+
+        showTodoList();
     }
 
     /**
