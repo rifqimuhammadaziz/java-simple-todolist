@@ -131,14 +131,45 @@ public class TodolistApp {
      * View of Show all todo list
      */
     public static void viewShowTodoList() {
+        System.out.println("TodoList");
+        showTodoList(); // show all todo list
+        System.out.println("MENU");
+        System.out.println("1. Add Todo");
+        System.out.println("2. Remove");
 
+        var input = input("Choose Menu");
+        if (input.equals("1")) {
+            viewAddTodoList();
+        } else if (input.equals("2")) {
+            viewRemoveTodoList();
+        } else {
+            System.out.println("Wrong input!");
+        }
     }
 
     /**
      * View of Add/Save todo list
      */
     public static void viewAddTodoList() {
+        while (true) {
+            System.out.println("TodoList");
+            showTodoList();
+            System.out.println("MENU");
+            System.out.println("1. Add Todo");
+            System.out.println("2. Remove");
+            System.out.println("3 . Exit");
 
+            var input = input("Choose Menu");
+            if (input.equals("1")) {
+                viewAddTodoList();
+            } else if (input.equals("2")) {
+                viewRemoveTodoList();
+            } else if (input.equals("3")) {
+                break;
+            } else {
+                System.out.println("Wrong input!");
+            }
+        }
     }
 
     /**
