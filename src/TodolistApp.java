@@ -4,7 +4,7 @@ public class TodolistApp {
     public static java.util.Scanner scanner = new java.util.Scanner(System.in); // input
 
     public static void main(String[] args) {
-        testViewShowTodoList();
+        viewShowTodoList();
     }
 
     /**
@@ -156,26 +156,24 @@ public class TodolistApp {
      * View of Add/Save todo list
      */
     public static void viewAddTodoList() {
-        while (true) {
-            System.out.println("TodoList");
-            showTodoList();
+        System.out.println("ADD TODOLIST");
 
-            System.out.println("MENU");
-            System.out.println("1. Add Todo");
-            System.out.println("2. Remove");
-            System.out.println("3. Exit");
+        var todo = input("Todo (x to cancel)");
 
-            var input = input("Choose Menu");
-            if (input.equals("1")) {
-                viewAddTodoList();
-            } else if (input.equals("2")) {
-                viewRemoveTodoList();
-            } else if (input.equals("3")) {
-                break;
-            } else {
-                System.out.println("Wrong input!");
-            }
+        if (todo.equals("x")) {
+            viewShowTodoList();
+        } else {
+            addTodoList(todo);
         }
+    }
+
+    public static void testViewAddTodoList() {
+        addTodoList("Todolist Pertama");
+        addTodoList("Todolist Kedua");
+
+        viewAddTodoList();
+
+        showTodoList();
     }
 
     public static void testViewShowTodoList() {
@@ -191,6 +189,27 @@ public class TodolistApp {
      * View of Delete todo list
      */
     public static void viewRemoveTodoList() {
+        System.out.println("DELETE TODOLIST");
 
+        var number = input("Select number todolist to delete (x to cancel)");
+
+        if (number.equals("x")) {
+            viewShowTodoList();
+        } else {
+            // convert string var number to integer
+            boolean success = removeTodoList(Integer.valueOf((number)));
+            if(!success) {
+                System.out.println("Failed delete todolist : " + number);
+            }
+        }
+    }
+
+    public static void testViewRemoveTodoList() {
+        addTodoList("Todolist pertama");
+        addTodoList("Todolist kedua");
+        addTodoList("Todolist ketiga");
+
+        showTodoList();
+        viewRemoveTodoList();
     }
 }
